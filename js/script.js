@@ -26,70 +26,88 @@
 
 
 // // // ZADANIE!!!!!!!!!!!!!!!!!!!!!!!!! 
-
-// let numberOfFilms;
-
-// function start() {
-//     numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
-
-//     while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-//         numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
-
-//     }
-// }
-// start();
-// const personalMovieDB = {
-//     count: numberOfFilms,
-//     movies: {},
-//     actors: {},
-//     genres: [],
-//     privat: false
-// };
-
-// function rememberMyFilms() {
-//     for (let i = 0; i < 2; i++) {
-//         const a = prompt('Один из последних просмотренных фильмов?', ''),
-//             b = prompt('На сколько оцените его', '');
-
-//         if (a != null && b != null && a != "" && b != "" && a.length < 50) {
-//             personalMovieDB.movies[a] = b;
-//             console.log("done");
-//         } else {
-//             console.log("error  ");
-//             i--;
-//         }
-//     }
-// }
-// // rememberMyFilms();
-
-// function detectPersonaLevel() {
-//     if (personalMovieDB.count < 10) {
-//         console.log("malo");
-//     } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-//         console.log("norm");
-//     } else if (personalMovieDB.count >= 30) {
-//         console.log("kinoman");
+ 
+const personalMovieDB = {
+    count: 0,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false,
+    start: function(  ) {
+        personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    
+        while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
+            personalMovieDB.count  = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    
+        }
+    },
+    rememberMyFilms: function() {
+        for (let i = 0; i < 2; i++) {
+            const a = prompt('Один из последних просмотренных фильмов?', ''),
+                b = prompt('На сколько оцените его', '');
+    
+            if (a != null && b != null && a != "" && b != "" && a.length < 50) {
+                personalMovieDB.movies[a] = b;
+                console.log("done");
+            } else {
+                console.log("error  ");
+                i--;
+            }
+        }
+    },
+    detectPersonaLevel: function() {
+        if (personalMovieDB.count < 10) {
+            console.log("malo");
+        } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+            console.log("norm");
+        } else if (personalMovieDB.count >= 30) {
+            console.log("kinoman");
+        } else {
+            console.log("error ");
+        }
+    },
+    showMyDB: function(hidden) {
+        if (!hidden) {
+            console.log(personalMovieDB);
+        }
+    },
+    toggleVisibleMyDB: function() { 
+        if(personalMovieDB.privat) {
+            personalMovieDB.privat = false;
+        } else {
+            personalMovieDB.privat = true;
+        }
+    },
+    writeYourGenres: function() {
+        for (let i = 1; i <= 3; i++) {
+            let genre = prompt(`Ваш любимый жанр под номером ${i }`);
+            if(genre === '' || genre === null) {
+                console.log('Вы ввели некорректные данные или не ввели ихи вообще ');
+                i--;
+            } else {
+                personalMovieDB.genres[i - 1] = genre; 
+            }
+        }
+        personalMovieDB.genres.forEach((item, i) => {
+            console.log(`Любимый жанр номер  ${i + 1 } это ${item}`); 
+        });
+    } 
+}; 
+//   2 variant
+// for (let i = 1; i <= 3; i++) {
+//     let genres = prompt(`Введите ваши любимые жанры чере ззапятую`).toLowerCase() ;
+//     if(genres === '' || genres === null) {
+//         console.log('Вы ввели некорректные данные или не ввели ихи вообще ');
+//         i--;
 //     } else {
-//         console.log("error ");
+//         personalMovieDB.genres = genres.split(', '); 
+//         personalMovieDB.genres = genres.sort(); 
+
 //     }
 // }
-// // detectPersonaLevel();
-
-// function showMyDB(hidden) {
-//     if (!hidden)
-//         console.log(personalMovieDB);
-// }
-// // showMyDB(personalMovieDB.privat);
-
-// function writeYourGenres() {
-//     for (let i = 1; i <= 3; i++) {
-//         personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i }`);;
-//     }
-// }
-
-// writeYourGenres();
-
-// console.log(personalMovieDB);
+// personalMovieDB.genres.forEach((item, i) => {
+//     console.log(`Любимый жанр номер  ${i + 1 } это ${item}`); 
+// });
 // // // ZADANIE!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
@@ -303,3 +321,73 @@
 // console.log(newObject);
 
 // 23
+//  let str = "some";
+//  let strObg = new String(str);
+// //  console.log(typeof(str)); 
+// //  console.log(typeof(strObg)); 
+// console.dir([1, 2, 3]);
+
+// const soldier = {
+//     health: 400,
+//     armor: 100,
+//     sayHello: function(){
+//         console.log('hello');
+//     }
+// };
+// const john = Object.create(soldier);
+// // const john = {
+// //     health: 100, 
+// // };
+
+// // john.__proto__ = soldier;
+
+// // Object.setPrototypeOf(john, soldier);
+// // console.log(john.armor);
+// john.sayHello();
+
+
+// 26 vid
+// to string 1)
+// console.log(typeof(String(null)));
+// // 2) конкретинация
+// console.log(typeof(5 + ''));
+// const num = 5;
+// console.log("https:/vk.com/catalog/"  + num);
+// const fontSiza = 25 + 'px';
+// // t onumber 
+// console.log(typeof(Number('2')));
+// console.log(typeof(+'2'));
+// console.log( (parseInt("15px", 10)));
+// let ans = +prompt('hi', '');
+
+// // boolean null 0 '' nan undefined 
+// let switcher = 2;
+// if (switcher) {
+//     console.log('working...'); 
+// }
+
+// // 2
+// console.log(typeof(Boolean('2')));
+// console.log(typeof(!!('2')));
+
+// 27 vid
+// let x = 5; alert( x++ ); 5
+// [ ] + false - null + true 
+// console.log(typeof([] + false - null + true)); NaN
+// let y = 1; 
+// let x = y = 2; 
+// alert(x); 
+
+// console.log([ ] + 1 + 2); 12
+// alert( "1"[0] ); 1 элмент строки 
+// console.log(2 && 1 && null && 0 && undefined);и запинается на лжи
+// console.log(!!( 1 && 2 ) === (1 && 2)); два воскл знака превращают значение в булиновое, булиновое не равно числу
+             //   3
+// alert( null || 2 && 3 || 4 ); ИЛИ запинается на правде 3
+// const a = [1, 2, 3]; 
+// const b = [1, 2, 3]; 
+// console.log( a === b ); net
+// alert( typeof(+"Infinity" )); infinity
+
+// console.log("Ёжик" > "яблоко"); фолс
+console.log(0 || "" || 2 || undefined || true || falsе) ; 
