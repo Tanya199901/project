@@ -26,26 +26,26 @@
 
 
 // // // ZADANIE!!!!!!!!!!!!!!!!!!!!!!!!! 
- 
+
 const personalMovieDB = {
     count: 0,
     movies: {},
     actors: {},
     genres: [],
     privat: false,
-    start: function(  ) {
+    start: function () {
         personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
-    
+
         while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
-            personalMovieDB.count  = +prompt('Сколько фильмов вы уже посмотрели?', '');
-    
+            personalMovieDB.count = +prompt('Сколько фильмов вы уже посмотрели?', '');
+
         }
     },
-    rememberMyFilms: function() {
+    rememberMyFilms: function () {
         for (let i = 0; i < 2; i++) {
             const a = prompt('Один из последних просмотренных фильмов?', ''),
                 b = prompt('На сколько оцените его', '');
-    
+
             if (a != null && b != null && a != "" && b != "" && a.length < 50) {
                 personalMovieDB.movies[a] = b;
                 console.log("done");
@@ -55,7 +55,7 @@ const personalMovieDB = {
             }
         }
     },
-    detectPersonaLevel: function() {
+    detectPersonaLevel: function () {
         if (personalMovieDB.count < 10) {
             console.log("malo");
         } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
@@ -66,33 +66,33 @@ const personalMovieDB = {
             console.log("error ");
         }
     },
-    showMyDB: function(hidden) {
+    showMyDB: function (hidden) {
         if (!hidden) {
             console.log(personalMovieDB);
         }
     },
-    toggleVisibleMyDB: function() { 
-        if(personalMovieDB.privat) {
+    toggleVisibleMyDB: function () {
+        if (personalMovieDB.privat) {
             personalMovieDB.privat = false;
         } else {
             personalMovieDB.privat = true;
         }
     },
-    writeYourGenres: function() {
+    writeYourGenres: function () {
         for (let i = 1; i <= 3; i++) {
             let genre = prompt(`Ваш любимый жанр под номером ${i }`);
-            if(genre === '' || genre === null) {
+            if (genre === '' || genre === null) {
                 console.log('Вы ввели некорректные данные или не ввели ихи вообще ');
                 i--;
             } else {
-                personalMovieDB.genres[i - 1] = genre; 
+                personalMovieDB.genres[i - 1] = genre;
             }
         }
         personalMovieDB.genres.forEach((item, i) => {
-            console.log(`Любимый жанр номер  ${i + 1 } это ${item}`); 
+            console.log(`Любимый жанр номер  ${i + 1 } это ${item}`);
         });
-    } 
-}; 
+    }
+};
 //   2 variant
 // for (let i = 1; i <= 3; i++) {
 //     let genres = prompt(`Введите ваши любимые жанры чере ззапятую`).toLowerCase() ;
@@ -382,7 +382,7 @@ const personalMovieDB = {
 // alert( "1"[0] ); 1 элмент строки 
 // console.log(2 && 1 && null && 0 && undefined);и запинается на лжи
 // console.log(!!( 1 && 2 ) === (1 && 2)); два воскл знака превращают значение в булиновое, булиновое не равно числу
-             //   3
+//   3
 // alert( null || 2 && 3 || 4 ); ИЛИ запинается на правде 3
 // const a = [1, 2, 3]; 
 // const b = [1, 2, 3]; 
@@ -390,4 +390,60 @@ const personalMovieDB = {
 // alert( typeof(+"Infinity" )); infinity
 
 // console.log("Ёжик" > "яблоко"); фолс
-console.log(0 || "" || 2 || undefined || true || falsе) ; 
+// console.log(0 || "" || 2 || undefined || true || falsе) ; 
+
+
+// 28
+const box = document.getElementById('box');
+// console.log(box);
+const btns = document.getElementsByTagName('button');
+//  [1]or
+// console.log(btns[1]); 
+const wrapper = document.querySelector('.wrapper');
+const circles = document.getElementsByClassName('circle');
+// console.log(circles);
+
+// const hearts = wrapper.querySelector('.heart');можно ещ так сделать
+const hearts = document.querySelectorAll('.heart');
+// console.log(hearts);
+// hearts.forEach(item => {
+//     console.log(item);
+
+// });
+const oneHeart = document.querySelector('div');
+
+// console.log(oneHeart);
+// 29
+// box.style.backgroundColor = 'blue';
+// box.style.width = '500px';
+box.style.cssText = `background-color: blue; width:500px`;
+// width:${num}px`;
+btns[1].style.borderRadius = '100%';
+circles[0].style.backgroundColor = 'red';
+// for (let i = 0; i < hearts.length; i++) {
+//     hearts[i].style.backgroundColor = 'black';
+// }
+hearts.forEach(item => {
+    item.style.backgroundColor = 'black';
+});
+
+const div = document.createElement('div');
+// const text = document.createTextNode('тут был я');
+div.classList.add('black');
+// document.body.append(div);
+wrapper.append(div);
+// wrapper.appendChild(div);
+
+// wrapper.prepend(di v);
+// hearts[0].before(div);
+// hearts[0].after(div);
+// wrapper.insertBefore(div, hearts[0]); stariy metod
+
+// circles[0].remove();
+// wrapper.removeChild(hearts[1]);
+
+// hearts[0].replaceWith(circles[0]);
+// wrapper.replaceChild(circles[0], hearts[0]);
+div.innerHTML = '<h1>Hello world</h1>';
+// div.textContent = 'Hello';
+div.insertAdjacentHTML('beforeend', '<h2>Hi </h2>');
