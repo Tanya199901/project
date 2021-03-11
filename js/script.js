@@ -443,7 +443,41 @@ wrapper.append(div);
 // wrapper.removeChild(hearts[1]);
 
 // hearts[0].replaceWith(circles[0]);
-// wrapper.replaceChild(circles[0], hearts[0]);
-div.innerHTML = '<h1>Hello world</h1>';
-// div.textContent = 'Hello';
-div.insertAdjacentHTML('beforeend', '<h2>Hi </h2>');
+// // wrapper.replaceChild(circles[0], hearts[0]);
+// div.innerHTML = '<h1>Hello world</h1>';
+// // div.textContent = 'Hello';
+// div.insertAdjacentHTML('beforeend', '<h2>Hi </h2>');
+
+// 34
+// touchstart
+// touchmove
+// touchend
+// touchenter
+// touchleave
+// touchcancel
+window.addEventListener('DOMContentLoaded', () => {
+    const box = document.querySelector(' .box');
+
+    box.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        console.log('move');
+        console.log(e.touches);
+        console.log(e.targetTouches);
+        console.log(e.targetTouches[0].pageX);
+    });
+    box.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        console.log('start');
+    box.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            console.log('end ');
+        });
+    });
+});
+
+// cvoistva eventov 
+// touches  выдает список всех пальцев которые сейчас взаимодкйтвует с экраном 
+// targetTouches пальцы которые взаимодействуют именно с этим эдементом
+//  chengedTouches список пальцев которые учасвствуют в текущем событии, например если собитые тач енd
+// cобытие будет содержать палец который убран, даже если все другие остались
+// пальцы совершившие определенное назначенное действие 
